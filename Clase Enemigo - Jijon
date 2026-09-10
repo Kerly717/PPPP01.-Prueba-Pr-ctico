@@ -20,33 +20,7 @@ public class Enemigo {
         this.recompensa = recompensa;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public int getVida() {
-        return vida;
-    }
-
-    public int getVelocidad() {
-        return velocidad;
-    }
-
-    public int getPosicion() {
-        return posicion;
-    }
-
-    public void setPosicion(int posicion) {
-        this.posicion = posicion;
-    }
-
-    public int getRecompensa() {
-        return recompensa;
-    }
+    
 
     public void recibirDanio(int danio) {
         this.vida = this.vida - danio;
