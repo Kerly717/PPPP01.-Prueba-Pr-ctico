@@ -1,0 +1,95 @@
+public class ListaSecuencialTorres {
+
+    private static final int CAPACIDAD_MAXIMA = 20;
+
+    private Torre[] torres;
+    private int contador;
+
+    public ListaSecuencialTorres() {
+        this.torres = new Torre[CAPACIDAD_MAXIMA];
+        this.contador = 0;
+    }
+
+    /**
+     * Inserta una torre al final del arreglo.
+     * Retorna true si se pudo insertar, false si la lista esta llena.
+     */
+    public boolean insertarTorre(Torre nuevaTorre) {
+        if (contador >= CAPACIDAD_MAXIMA) {
+            System.out.println("No se puede registrar la torre: capacidad maxima alcanzada.");
+            return false;
+        }
+        torres[contador] = nuevaTorre;
+        contador++;
+        return true;
+    }
+
+    /**
+     * Elimina una torre por su id, recorriendo el arreglo y
+     * desplazando los elementos siguientes una posicion a la izquierda.
+     */
+    public boolean eliminarTorrePorId(int id) {
+        int indice = buscarIndicePorId(id);
+        if (indice == -1) {
+            return false;
+        }
+        for (int i = indice; i < contador - 1; i++) {
+            torres[i] = torres[i + 1];
+        }
+        torres[contador - 1] = null;
+        contador--;
+        return true;
+    }
+
+    /**
+     * Busca una torre por id y la retorna, o null si no existe.
+     */
+    public Torre buscarTorrePorId(int id) {
+        int indice = buscarIndicePorId(id);
+        if (indice == -1) {
+            return null;
+        }
+        return torres[indice];
+    }
+
+    private int buscarIndicePorId(int id) {
+        for (int i = 0; i < contador; i++) {
+            if (torres[i].getId() == id) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * Muestra todas las torres registradas.
+     */
+    public void mostrarTorres() {
+        if (contador == 0) {
+            System.out.println("No hay torres registradas.");
+            return;
+        }
+        System.out.println("--- Torres registradas (" + contador + ") ---");
+        for (int i = 0; i < contador; i++) {
+            System.out.println(torres[i]);
+        }
+    }
+
+    /**
+     * Cuenta cuantas torres estan activas (todas las que hay en el arreglo estan activas).
+     */
+    public int contarActivas() {
+        return contador;
+    }
+
+    public int getContador() {
+        return contador;
+    }
+
+    public Torre obtenerTorreEnIndice(int indice) {
+        if (indice < 0 || indice >= contador) {
+            return null;
+        }
+        return torres[indice];
+    }
+}
