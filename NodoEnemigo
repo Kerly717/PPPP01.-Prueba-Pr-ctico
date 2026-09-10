@@ -32,6 +32,8 @@ public class NodoEnemigo {
     public void setSiguiente(NodoEnemigo siguiente) {
         this.siguiente = siguiente;
     }
-
-
+    @Override
+    public String toString() {
+        return enemigo.toString();
+    }
 }
