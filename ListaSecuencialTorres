@@ -10,6 +10,10 @@ public class ListaSecuencialTorres {
         this.contador = 0;
     }
 
+    /**
+     * Inserta una torre al final del arreglo.
+     * Retorna true si se pudo insertar, false si la lista esta llena.
+     */
     public boolean insertarTorre(Torre nuevaTorre) {
         if (contador >= CAPACIDAD_MAXIMA) {
             System.out.println("No se puede registrar la torre: capacidad maxima alcanzada.");
@@ -20,7 +24,10 @@ public class ListaSecuencialTorres {
         return true;
     }
 
-
+    /**
+     * Elimina una torre por su id, recorriendo el arreglo y
+     * desplazando los elementos siguientes una posicion a la izquierda.
+     */
     public boolean eliminarTorrePorId(int id) {
         int indice = buscarIndicePorId(id);
         if (indice == -1) {
@@ -34,7 +41,9 @@ public class ListaSecuencialTorres {
         return true;
     }
 
-
+    /**
+     * Busca una torre por id y la retorna, o null si no existe.
+     */
     public Torre buscarTorrePorId(int id) {
         int indice = buscarIndicePorId(id);
         if (indice == -1) {
@@ -52,7 +61,9 @@ public class ListaSecuencialTorres {
         return -1;
     }
 
-
+    /**
+     * Muestra todas las torres registradas.
+     */
     public void mostrarTorres() {
         if (contador == 0) {
             System.out.println("No hay torres registradas.");
@@ -64,7 +75,9 @@ public class ListaSecuencialTorres {
         }
     }
 
-
+    /**
+     * Cuenta cuantas torres estan activas (todas las que hay en el arreglo estan activas).
+     */
     public int contarActivas() {
         return contador;
     }
