@@ -9,9 +9,7 @@ public class Jugador {
         this.vidas = vidasIniciales;
     }
 
-    public int getVidas() {
-        return vidas;
-    }
+  
 
     public void perderVida() {
         if (vidas > 0) {
