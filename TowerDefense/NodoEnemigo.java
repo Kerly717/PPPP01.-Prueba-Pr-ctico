@@ -1,0 +1,41 @@
+/**
+ * Nodo de la lista doblemente enlazada de enemigos activos.
+ * Envuelve un objeto Enemigo y agrega las referencias anterior y siguiente.
+ */
+public class NodoEnemigo {
+
+    private Enemigo enemigo;
+    private NodoEnemigo anterior;
+    private NodoEnemigo siguiente;
+
+    public NodoEnemigo(Enemigo enemigo) {
+        this.enemigo = enemigo;
+        this.anterior = null;
+        this.siguiente = null;
+    }
+
+    public Enemigo getEnemigo() {
+        return enemigo;
+    }
+
+    public NodoEnemigo getAnterior() {
+        return anterior;
+    }
+
+    public void setAnterior(NodoEnemigo anterior) {
+        this.anterior = anterior;
+    }
+
+    public NodoEnemigo getSiguiente() {
+        return siguiente;
+    }
+
+    public void setSiguiente(NodoEnemigo siguiente) {
+        this.siguiente = siguiente;
+    }
+
+    @Override
+    public String toString() {
+        return enemigo.toString();
+    }
+}
