@@ -1,0 +1,25 @@
+/**
+ * Representa al jugador y sus vidas restantes.
+ */
+public class Jugador {
+
+    private int vidas;
+
+    public Jugador(int vidasIniciales) {
+        this.vidas = vidasIniciales;
+    }
+
+    public int getVidas() {
+        return vidas;
+    }
+
+    public void perderVida() {
+        if (vidas > 0) {
+            vidas--;
+        }
+    }
+
+    public boolean estaDerrotado() {
+        return vidas <= 0;
+    }
+}
