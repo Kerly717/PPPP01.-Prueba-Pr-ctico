@@ -57,9 +57,5 @@ public class Cola<T> {
         return frente == null;
     }
 
-    public void limpiar() {
-        frente = null;
-        fin = null;
-        contador = 0;
-    }
+   
 }
