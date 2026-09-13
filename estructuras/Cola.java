@@ -56,6 +56,10 @@ public class Cola<T> {
     public boolean estaVacia() {
         return frente == null;
     }
-
+     public void limpiar() {
+        frente = null;
+        fin = null;
+        contador = 0;
+    }
    
 }
