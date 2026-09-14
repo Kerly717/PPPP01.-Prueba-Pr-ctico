@@ -15,14 +15,7 @@ public enum TipoEnemigo {
     private final int velocidad;
     private final int recompensa;
     private final int radio;
-
-    TipoEnemigo(String nombre, int vidaBase, int velocidad, int recompensa, int radio) {
-        this.nombre = nombre;
-        this.vidaBase = vidaBase;
-        this.velocidad = velocidad;
-        this.recompensa = recompensa;
-        this.radio = radio;
-    }
+        }
 
     public String getNombre() {
         return nombre;
@@ -44,6 +37,14 @@ public enum TipoEnemigo {
     public int getRadio() {
         return radio;
     }
+
+
+    TipoEnemigo(String nombre, int vidaBase, int velocidad, int recompensa, int radio) {
+        this.nombre = nombre;
+        this.vidaBase = vidaBase;
+        this.velocidad = velocidad;
+        this.recompensa = recompensa;
+        this.radio = radio;
 
     @Override
     public String toString() {
