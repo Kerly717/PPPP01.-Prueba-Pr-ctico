@@ -19,7 +19,36 @@ import towerdefense.modelo.TipoTorre;
  */
 public final class Paleta {
 
-    
+    public static final Color FONDO = new Color(0x0E1524);
+    public static final Color PANEL = new Color(0x16203247, true);
+    public static final Color PANEL_SOLIDO = new Color(0x162032);
+    public static final Color PANEL_CLARO = new Color(0x1F2B42);
+    public static final Color BORDE = new Color(0x2E3E5C);
+
+    public static final Color TEXTO = new Color(0xE9EFF9);
+    public static final Color TEXTO_TENUE = new Color(0x92A5C4);
+
+    public static final Color ACENTO = new Color(0x4CC9F0);
+    public static final Color ORO = new Color(0xFFC94D);
+    public static final Color VIDA = new Color(0x5BE37A);
+    public static final Color AVISO = new Color(0xFFB03A);
+    public static final Color PELIGRO = new Color(0xFF5C6E);
+
+    public static final Color CAMINO = new Color(0x8A6A45);
+    public static final Color CAMINO_BORDE = new Color(0x5C4429);
+    public static final Color CESPED_A = new Color(0x1F3A2A);
+    public static final Color CESPED_B = new Color(0x264532);
+    public static final Color HOJA = new Color(0x2F7A45);
+    public static final Color HOJA_CLARA = new Color(0x46A05C);
+    public static final Color TRONCO = new Color(0x5A3B22);
+    public static final Color PIEDRA = new Color(0x5A6473);
+
+    public static final Font TITULO = new Font(Font.SANS_SERIF, Font.BOLD, 42);
+    public static final Font SUBTITULO = new Font(Font.SANS_SERIF, Font.BOLD, 18);
+    public static final Font ETIQUETA = new Font(Font.SANS_SERIF, Font.BOLD, 13);
+    public static final Font NORMAL = new Font(Font.SANS_SERIF, Font.PLAIN, 12);
+    public static final Font PEQUENO = new Font(Font.SANS_SERIF, Font.PLAIN, 11);
+    public static final Font NUMERO = new Font(Font.SANS_SERIF, Font.BOLD, 20);
 
     private Paleta() {
         // Clase utilitaria.
