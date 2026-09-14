@@ -1,5 +1,4 @@
 package towerdefense.estructuras;
-
 /**
  * Pila LIFO (el ultimo en entrar es el primero en salir), enlazada.
  *
@@ -35,6 +34,7 @@ public class Pila<T> {
     public T verTope() {
         return estaVacia() ? null : tope.getDato();
     }
+
 
     public NodoSimple<T> getTope() {
         return tope;
