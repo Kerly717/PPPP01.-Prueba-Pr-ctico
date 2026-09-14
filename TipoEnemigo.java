@@ -22,28 +22,6 @@ public enum TipoEnemigo {
         this.velocidad = velocidad;
         this.recompensa = recompensa;
         this.radio = radio;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public int getVidaBase() {
-        return vidaBase;
-    }
-
-    public int getVelocidad() {
-        return velocidad;
-    }
-
-    public int getRecompensa() {
-        return recompensa;
-    }
-
-    /** Radio en pixeles con el que se dibuja. */
-    public int getRadio() {
-        return radio;
-    }
 
     @Override
     public String toString() {
