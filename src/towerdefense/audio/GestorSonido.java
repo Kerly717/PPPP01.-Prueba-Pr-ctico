@@ -8,17 +8,6 @@ import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineEvent;
 import towerdefense.modelo.TipoTorre;
 
-/**
- * Punto unico para todo el sonido del juego: efectos y musica de fondo.
- *
- * Es un singleton (un solo reproductor para toda la aplicacion) y nunca lanza
- * una excepcion hacia afuera: si el sistema no tiene mezclador de audio (por
- * ejemplo, un entorno sin tarjeta de sonido) el juego sigue funcionando en
- * silencio en vez de romperse.
- *
- * Los sonidos se sintetizan una sola vez (ver {@link Sintetizador}) y se
- * guardan en cache como bytes PCM listos para reproducir.
- */
 public final class GestorSonido {
 
     private static final GestorSonido INSTANCIA = new GestorSonido();
@@ -50,15 +39,10 @@ public final class GestorSonido {
         }
     }
 
-    // ===============================================================
-    // EFECTOS DE SONIDO
-    // ===============================================================
-
     public void reproducirColocarTorre() {
         reproducirEfecto("colocarTorre", GestorSonido::construirColocarTorre);
     }
 
-    /** Cada tipo de torre dispara con un timbre distinto (arco, canon, magia). */
     public void reproducirDisparo(TipoTorre tipo) {
         switch (tipo) {
             case ARQUERO:
@@ -129,11 +113,6 @@ public final class GestorSonido {
         }
     }
 
-    // ===============================================================
-    // MUSICA DE FONDO
-    // ===============================================================
-
-    /** Arranca la banda sonora en bucle. No hace nada si ya estaba sonando. */
     public synchronized void iniciarMusica() {
         if (!audioDisponible || clipMusica != null) {
             return;
@@ -158,9 +137,6 @@ public final class GestorSonido {
         }
     }
 
-    // ===============================================================
-    // VOLUMEN
-    // ===============================================================
 
     public void setVolumenMusica(float volumen) {
         volumenMusica = Math.max(0f, Math.min(1f, volumen));
@@ -203,9 +179,6 @@ public final class GestorSonido {
         control.setValue(Math.max(control.getMinimum(), Math.min(control.getMaximum(), db)));
     }
 
-    // ===============================================================
-    // COMPOSICION DE CADA SONIDO
-    // ===============================================================
 
     private static short[] construirColocarTorre() {
         short[] golpe = Sintetizador.percusion(1, 0.09, 0.5, 130);
@@ -291,11 +264,6 @@ public final class GestorSonido {
         return Sintetizador.nota(Sintetizador.SENO, 700, 700, 0.035, 0.002, 0.03, 0.22);
     }
 
-    /**
-     * Compone la banda sonora: un acompanamiento suave (acordes largos) con un
-     * arpegio ligero encima, en La menor, en bucle de 8 compases (~19 s) para
-     * que no se note repetitivo ni resulte molesto a volumen bajo.
-     */
     private static short[] construirMusica() {
         double bpm = 100;
         double beat = 60.0 / bpm;
@@ -304,7 +272,6 @@ public final class GestorSonido {
         int totalMuestras = (int) Math.round(compas * totalCompases * Sintetizador.MUESTREO);
         double[] mezcla = new double[totalMuestras];
 
-        // Progresion i - VI - III - VII en La menor (Am - F - C - G).
         double[][] acordes = {
             {220.00, 261.63, 329.63},
             {174.61, 220.00, 261.63},
