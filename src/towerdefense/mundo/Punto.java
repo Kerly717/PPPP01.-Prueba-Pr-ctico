@@ -1,8 +1,6 @@
 package towerdefense.mundo;
 
-/**
- * Punto inmutable en pixeles dentro del mapa.
- */
+
 public class Punto {
 
     private final double x;
@@ -21,7 +19,6 @@ public class Punto {
         return y;
     }
 
-    /** Distancia en linea recta hasta otro punto. */
     public double distanciaA(Punto otro) {
         return Math.hypot(otro.x - x, otro.y - y);
     }
