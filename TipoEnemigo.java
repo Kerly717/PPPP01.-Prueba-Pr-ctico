@@ -15,6 +15,29 @@ public enum TipoEnemigo {
     private final int velocidad;
     private final int recompensa;
     private final int radio;
+        }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getVidaBase() {
+        return vidaBase;
+    }
+
+    public int getVelocidad() {
+        return velocidad;
+    }
+
+    public int getRecompensa() {
+        return recompensa;
+    }
+
+    /** Radio en pixeles con el que se dibuja. */
+    public int getRadio() {
+        return radio;
+    }
+
 
     TipoEnemigo(String nombre, int vidaBase, int velocidad, int recompensa, int radio) {
         this.nombre = nombre;
