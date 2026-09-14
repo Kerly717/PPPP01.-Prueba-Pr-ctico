@@ -47,5 +47,34 @@ public class VentanaPrincipal extends JFrame
         return new Dimension(Math.max(1100, ancho), Math.max(680, alto));
     }
 
-    
+    @Override
+    public void alJugar() {
+        cerrarPartida();
+        panelJuego = new PanelJuego(this);
+        add(panelJuego, TARJETA_JUEGO);
+
+        panelMenu.detenerAnimacion();
+        tarjetas.show(getContentPane(), TARJETA_JUEGO);
+    }
+
+    @Override
+    public void alSalirDeLaPartida() {
+        cerrarPartida();
+        tarjetas.show(getContentPane(), TARJETA_MENU);
+        panelMenu.iniciarAnimacion();
+    }
+
+    @Override
+    public void alSalir() {
+        dispose();
+    }
+
+    private void cerrarPartida() {
+        if (panelJuego == null) {
+            return;
+        }
+        panelJuego.detener();
+        remove(panelJuego);
+        panelJuego = null;
+    }
 }
