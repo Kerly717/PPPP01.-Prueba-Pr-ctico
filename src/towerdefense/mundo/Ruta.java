@@ -2,20 +2,8 @@ package towerdefense.mundo;
 
 import towerdefense.estructuras.ListaSecuencial;
 
-/**
- * Trayecto que siguen los enemigos, de la entrada a la base.
- *
- * Se calcula una sola vez al empezar la partida recorriendo el camino casilla
- * por casilla. Como el trazado es un pasillo sin bifurcaciones, basta con ir
- * saltando a la unica casilla vecina que aun no se ha visitado.
- *
- * Cada enemigo guarda cuantos pixeles lleva recorridos; {@link #puntoEn(double)}
- * traduce esa distancia a una coordenada de la pantalla. Asi el movimiento es
- * continuo y suave, en vez de ir a saltos de casilla en casilla.
- */
 public class Ruta {
 
-    /** Vecinos en cruz: arriba, derecha, abajo, izquierda. */
     private static final int[][] DIRECCIONES = {{0, -1}, {1, 0}, {0, 1}, {-1, 0}};
 
     private final ListaSecuencial<Punto> puntos;
@@ -27,7 +15,6 @@ public class Ruta {
         calcularLongitud();
     }
 
-    /** Sigue el pasillo desde la entrada hasta que no queda vecino nuevo. */
     private void recorrerCamino(Mapa mapa) {
         int[] entrada = buscarEntrada(mapa);
         boolean[][] visitada = new boolean[mapa.getColumnas()][mapa.getFilas()];
@@ -77,10 +64,6 @@ public class Ruta {
         }
     }
 
-    /**
-     * Convierte una distancia recorrida en la coordenada correspondiente,
-     * interpolando entre los dos puntos del tramo en el que se encuentra.
-     */
     public Punto puntoEn(double distancia) {
         if (distancia <= 0) {
             return puntos.obtener(0);
