@@ -10,17 +10,6 @@ import towerdefense.mundo.Ruta;
  * trazado; la ruta se encarga de traducir esa distancia a coordenadas. Gracias
  * a eso el enemigo se mueve en linea continua y toma bien las curvas.
  */
-public class Enemigo {
-
-    private final int id;
-    private final TipoEnemigo tipo;
-    private final Ruta ruta;
-    private final int vidaMaxima;
-    private final double velocidad;
-
-    private int vida;
-    private double distanciaRecorrida;
-    private double destelloGolpe;
 
     public Enemigo(int id, TipoEnemigo tipo, Ruta ruta, double multiplicadorVida) {
         this.id = id;
