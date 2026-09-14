@@ -9,10 +9,7 @@ public final class Main {
     private Main() {
     }
 
-    public static void main(String[] args) {
-        aplicarAspectoDelSistema();
-        SwingUtilities.invokeLater(() -> new VentanaPrincipal().setVisible(true));
-    }
+ 
 
     private static void aplicarAspectoDelSistema() {
         try {
