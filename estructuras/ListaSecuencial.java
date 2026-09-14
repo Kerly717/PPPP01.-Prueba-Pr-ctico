@@ -60,38 +60,5 @@ public class ListaSecuencial<T> {
         return eliminado;
     }
 
-    @SuppressWarnings("unchecked")
-    public T obtener(int indice) {
-        if (!esIndiceValido(indice)) {
-            return null;
-        }
-        return (T) elementos[indice];
-    }
-
-    public boolean esIndiceValido(int indice) {
-        return indice >= 0 && indice < contador;
-    }
-
-    public int getContador() {
-        return contador;
-    }
-
-    public int getCapacidad() {
-        return elementos.length;
-    }
-
-    public boolean estaVacia() {
-        return contador == 0;
-    }
-
-    public boolean estaLlena() {
-        return contador == elementos.length;
-    }
-
-    public void limpiar() {
-        for (int i = 0; i < contador; i++) {
-            elementos[i] = null;
-        }
-        contador = 0;
-    }
+   
 }
