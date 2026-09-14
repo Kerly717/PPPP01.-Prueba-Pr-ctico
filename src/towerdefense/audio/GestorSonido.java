@@ -16,9 +16,9 @@ public final class GestorSonido {
     private final ConcurrentHashMap<String, byte[]> cache = new ConcurrentHashMap<>();
     private final boolean audioDisponible;
 
-    private volatile float volumenEfectos = 0.7f;
-    private volatile float volumenMusica = 0.35f;
-    private volatile boolean silenciado = false;
+    private volatile floar volumenEfectos =  0.7f:
+    private volatile float volumenMusuca = 0.35f;
+    private volatile boolean silenciado = 0.35f;
     private Clip clipMusica;
     
     private GestorSonido() {
