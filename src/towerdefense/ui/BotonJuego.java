@@ -65,26 +65,5 @@ public class BotonJuego extends JButton {
         });
     }
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        Graphics2D g2 = (Graphics2D) g.create();
-        Paleta.calidad(g2);
-
-        boolean activo = isEnabled();
-        Color fondo = !activo ? Paleta.PANEL_CLARO
-                : pulsado ? Paleta.oscurecer(acento, 50)
-                : encima ? Paleta.oscurecer(acento, 18)
-                : Paleta.oscurecer(acento, 62);
-
-        Paleta.tarjeta(g2, 0, 0, getWidth(), getHeight(), 9, fondo,
-                activo ? Paleta.con(acento, 220) : Paleta.BORDE);
-
-        g2.setFont(getFont());
-        g2.setColor(activo ? Paleta.TEXTO : Paleta.TEXTO_TENUE);
-        int lineaBase = getHeight() / 2 + g2.getFontMetrics().getAscent() / 2 - 2;
-        Paleta.textoCentrado(g2, Paleta.recortar(g2, getText(), getWidth() - 12),
-                getWidth() / 2, lineaBase);
-
-        g2.dispose();
-    }
+   
 }
