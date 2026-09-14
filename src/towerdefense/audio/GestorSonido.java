@@ -20,7 +20,7 @@ public final class GestorSonido {
     private volatile float volumenMusica = 0.35f;
     private volatile boolean silenciado = false;
     private Clip clipMusica;
-
+    
     private GestorSonido() {
         audioDisponible = probarAudio();
     }
