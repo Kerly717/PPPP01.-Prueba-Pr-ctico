@@ -1,46 +1,41 @@
+package towerdefense.modelo;
+
 /**
- * Clase de datos que representa una oleada, tal como lo pide la seccion 8
- * del documento guia (independiente del nodo que la enlaza en la lista circular).
+ * Receta de una oleada: cuantos enemigos salen, de que tipo y con cuanta vida
+ * respecto a la normal.
  */
 public class Oleada {
 
-    private int idOleada;
-    private int cantidadEnemigos;
-    private String tipoEnemigo;
-    private int vidaBase;
-    private int velocidadBase;
+    private final int numero;
+    private final TipoEnemigo tipo;
+    private final int cantidad;
+    private final double multiplicadorVida;
 
-    public Oleada(int idOleada, int cantidadEnemigos, String tipoEnemigo, int vidaBase, int velocidadBase) {
-        this.idOleada = idOleada;
-        this.cantidadEnemigos = cantidadEnemigos;
-        this.tipoEnemigo = tipoEnemigo;
-        this.vidaBase = vidaBase;
-        this.velocidadBase = velocidadBase;
+    public Oleada(int numero, TipoEnemigo tipo, int cantidad, double multiplicadorVida) {
+        this.numero = numero;
+        this.tipo = tipo;
+        this.cantidad = cantidad;
+        this.multiplicadorVida = multiplicadorVida;
     }
 
-    public int getIdOleada() {
-        return idOleada;
+    public int getNumero() {
+        return numero;
     }
 
-    public int getCantidadEnemigos() {
-        return cantidadEnemigos;
+    public TipoEnemigo getTipo() {
+        return tipo;
     }
 
-    public String getTipoEnemigo() {
-        return tipoEnemigo;
+    public int getCantidad() {
+        return cantidad;
     }
 
-    public int getVidaBase() {
-        return vidaBase;
-    }
-
-    public int getVelocidadBase() {
-        return velocidadBase;
+    public double getMultiplicadorVida() {
+        return multiplicadorVida;
     }
 
     @Override
     public String toString() {
-        return "Oleada #" + idOleada + " [" + tipoEnemigo + "] cantidad=" + cantidadEnemigos
-                + " vidaBase=" + vidaBase + " velBase=" + velocidadBase;
+        return "Ola " + numero + ": " + cantidad + " x " + tipo.getNombre();
     }
 }
