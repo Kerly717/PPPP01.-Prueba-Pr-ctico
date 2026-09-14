@@ -66,7 +66,20 @@ public class Torre {
     // Mejoras
     // ---------------------------------------------------------------
 
-   
+    public boolean sePuedeMejorar() {
+        return nivel < NIVEL_MAXIMO;
+    }
+
+    public int getCostoMejora() {
+        return tipo.getCosto() * nivel;
+    }
+
+    public void mejorar() {
+        if (sePuedeMejorar()) {
+            inversionTotal += getCostoMejora();
+            nivel++;
+        }
+    }
 
     // ---------------------------------------------------------------
     // Consultas
