@@ -2,32 +2,14 @@ package towerdefense.audio;
 
 import java.util.Random;
 
-/**
- * Generador de audio PCM en crudo.
- *
- * En vez de cargar archivos .wav o .mp3, este modulo SINTETIZA sus propios
- * efectos de sonido y su musica de fondo, onda a onda y nota a nota. Se
- * eligio hacerlo asi por dos razones:
- *
- *  1) El proyecto no tiene una carpeta de recursos ni un sistema de empaquetado
- *     (se compila con "javac -d build $(find src -name *.java)" y se ejecuta
- *     con "java -cp build towerdefense.Main", tal como indica Main.java), asi
- *     que no hay donde copiar archivos de audio sin tocar ese flujo.
- *  2) Sintetizar evita cualquier problema de derechos de autor: nada de lo
- *     que suena aqui proviene de una biblioteca de sonidos ni de musica de
- *     terceros.
- *
- * Todo se genera en PCM de 16 bits, mono, a {@link #MUESTREO} Hz.
- */
+
 final class Sintetizador {
 
     static final float MUESTREO = 44100f;
 
     private Sintetizador() {
-        // Clase utilitaria.
     }
 
-    /** Forma de onda: recibe la fase en ciclos (se repite cada entero) y da un valor entre -1 y 1. */
     interface Onda {
         double valor(double faseCiclos);
     }
@@ -36,10 +18,6 @@ final class Sintetizador {
     static final Onda TRIANGULO = fase -> 2 * Math.abs(2 * (fase - Math.floor(fase + 0.5))) - 1;
     static final Onda CUADRADA = fase -> Math.signum(Math.sin(2 * Math.PI * fase));
 
-    /**
-     * Genera una nota con posible deslizamiento de frecuencia y una envolvente
-     * simple de ataque/caida, para que no truene al empezar ni al terminar.
-     */
     static short[] nota(Onda onda, double frecuenciaInicial, double frecuenciaFinal,
             double duracionSeg, double ataqueSeg, double caidaSeg, double amplitud) {
         int total = Math.max(1, (int) (duracionSeg * MUESTREO));
@@ -54,8 +32,6 @@ final class Sintetizador {
         }
         return datos;
     }
-
-    /** Percusion: ruido blanco mezclado con un tono grave, con caida exponencial (golpes, disparos, pisadas). */
     static short[] percusion(long semilla, double duracionSeg, double amplitud, double tonoBase) {
         Random azar = new Random(semilla);
         int total = Math.max(1, (int) (duracionSeg * MUESTREO));
@@ -91,7 +67,6 @@ final class Sintetizador {
         return (short) Math.max(Short.MIN_VALUE, Math.min(Short.MAX_VALUE, v));
     }
 
-    /** Pone varios fragmentos uno detras de otro. */
     static short[] concatenar(short[]... fragmentos) {
         int total = 0;
         for (short[] f : fragmentos) {
@@ -106,7 +81,6 @@ final class Sintetizador {
         return resultado;
     }
 
-    /** Suma varias pistas para que suenen a la vez (con la longitud de la mas larga). */
     static short[] mezclar(short[]... pistas) {
         int total = 0;
         for (short[] p : pistas) {
@@ -122,7 +96,6 @@ final class Sintetizador {
         return resultado;
     }
 
-    /** Suma una pista sobre un acumulador de mezcla larga, en el instante indicado (para componer musica). */
     static void agregarEn(double[] acumulador, short[] fragmento, int desdeMuestra) {
         for (int i = 0; i < fragmento.length; i++) {
             int destino = desdeMuestra + i;
@@ -140,7 +113,6 @@ final class Sintetizador {
         return resultado;
     }
 
-    /** Convierte a bytes PCM de 16 bits, little-endian (formato usado por {@link GestorSonido}). */
     static byte[] aBytes(short[] muestras) {
         byte[] datos = new byte[muestras.length * 2];
         for (int i = 0; i < muestras.length; i++) {
